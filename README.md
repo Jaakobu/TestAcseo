@@ -8,4 +8,4 @@ Demarrage du projet en Symfony 5.2
 
 Commande symfony pour créer un User : 
 
-*php bin/console doctrine:fixtures:loa
+*php bin/console doctrine:fixtures:load*

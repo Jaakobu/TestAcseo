@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Demandes Client
+{% endblock %}
+
+{% block body %}
+	<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Jacob's Test</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav me-auto mb-2 mb-md-0">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="{{path('admin')}}">Accueil</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('message-user-list')}}">Messages</a>
+					</li>
+
+				</ul>
+
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+
+		<div class="py-5 text-center">
+			<img class="d-block mx-auto mb-4" src="/images/envelope.svg" alt="" width="72" height="57">
+			<h2>Demandes Client
+			</h2>
+
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+
+							<th>Nom</th>
+							<th>Prenom</th>
+							<th>Email</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						{% for demandeClient in demandeClients %}
+
+							<tr>
+
+								<td class="">{{ demandeClient.nom}}</td>
+								<td class="">{{ demandeClient.prenom}}</td>
+								<td class="">{{ demandeClient.email}}</td>
+								<td>
+									<a href="{{ path('message-user-messages', {'email': demandeClient.email})}}" class="btn btn-primary">Lire les messages</a>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>{% endblock %}

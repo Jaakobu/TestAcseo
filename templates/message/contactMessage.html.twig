@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contactez-nous
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="py-5 text-center">
+			<img class="d-block mx-auto mb-4" src="/images/envelope.svg" alt="" width="72" height="57">
+			<h2>Contactez-nous</h2>
+			<p class="lead">Parce que vous êtes notre priorité, sollicitez-nous pour toute nouvelle demande</p>
+		</div>
+		<div class="example-wrapper">
+
+			{{form_start(messageForm)}}
+
+			{{form_row(messageForm.nom)}}
+			{{form_row(messageForm.prenom)}}
+			{{form_row(messageForm.telephone)}}
+			{{form_row(messageForm.email)}}
+			{{form_row(messageForm.message)}}
+
+			<button type="submit" class=" mt-5 btn btn-primary">Envoyer</button>
+
+			{{form_end(messageForm)}}
+			<a href="{{ path('home')}}">
+				<button class=" mt-5 btn btn-secondary">Retour</button>
+			</a>
+		</div>
+
+	</div>
+{% endblock %}

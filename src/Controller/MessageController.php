@@ -60,59 +60,40 @@ class MessageController extends AbstractController
 
 
     /**
-     * @Route("/admin/message-user-list", name="message-user-list")
+     * @Route("/admin/messages", name="messages")
      */
     public function messageUserList(MessageRepository $messageRepository): Response
     {
-
         $messageClient = $messageRepository->findAllGroupBy('email');
 
-
         return $this->render('admin/messagerie/messageUserList.html.twig', [
-
-
             'demandeClients' => $messageClient,
-
         ]);
     }
 
     /**
-     * @Route("/admin/message-user-messages", name="message-user-messages")
+     * @Route("/admin/messages/{email}", name="messages-par-user")
      */
-    public function messageUserShow(MessageRepository $messageRepository, Request $request): Response
+    public function messageUserShow($email, MessageRepository $messageRepository): Response
     {
-
-        $email = $request->get('email');
-
         $messageClient = $messageRepository->findBy(['email' => $email]);
 
-
-
         return $this->render('admin/messagerie/messageUserMessages.html.twig', [
-
-
             'demandeClients' => $messageClient,
-
         ]);
     }
 
-
     /**
-     * @Route("/validation-message/{email}" name="message-user-messages-validation" )
+     * @Route("/validation-message/{id}", name="message_lu")
      */
-    public function validateSouscriptionAction(MessageRepository $messageRepository, EntityManager $entityManager)
+    public function validateSouscriptionAction($id, MessageRepository $messageRepository, EntityManagerInterface $entityManager)
     {
-
-
-
-        $message = $messageRepository->find('id');
-        $message->setMessageRead(true);
+        $message = $messageRepository->find($id);
+        $message->getMessageRead() ? $message->setMessageRead(false) : $message->setMessageRead(true);
 
         $entityManager->persist($message);
         $entityManager->flush();
 
-
-
-        return $this->redirect($_SERVER['HTTP_REFERER']);
+        return $this->redirectToRoute("messages-par-user", ['email' => $message->getEmail()]);
     }
 }

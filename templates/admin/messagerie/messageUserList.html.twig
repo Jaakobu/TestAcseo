@@ -17,7 +17,7 @@
 						<a class="nav-link active" aria-current="page" href="{{path('admin')}}">Accueil</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="{{ path('message-user-list')}}">Messages</a>
+						<a class="nav-link" href="{{ path('messages')}}">Messages</a>
 					</li>
 
 				</ul>
@@ -47,16 +47,13 @@
 						</tr>
 					</thead>
 					<tbody>
-
 						{% for demandeClient in demandeClients %}
-
 							<tr>
-
 								<td class="">{{ demandeClient.nom}}</td>
 								<td class="">{{ demandeClient.prenom}}</td>
 								<td class="">{{ demandeClient.email}}</td>
 								<td>
-									<a href="{{ path('message-user-messages', {'email': demandeClient.email})}}" class="btn btn-primary">Lire les messages</a>
+									<a href="{{ path('messages-par-user', {'email': demandeClient.email}) }}" class="btn btn-primary">Lire les messages</a>
 								</td>
 							</tr>
 						{% endfor %}

@@ -19,7 +19,7 @@ Vous êtes développeur chez ACSEO. Vous recevez une demande de la part d'un cli
 
 Les règles de gestion suivantes sont à mettre en place :
 
-> Un utilisateur qui dépose plusieurs demande de contact avec le même email, doit voir ses demandes regroupées et se cumulées pour ce contact
+> Un utilisateur qui dépose plusieurs demande de contact avec le même email, doit voir ses demandes regroupées et se cumuler pour ce contact
 
 > Toute demande de contact doit déclencher la création d'un fichier JSON unique dans un répertoire spécifique non exposé par le serveur web, qui contient l'ensemble du contenu de la demande : informations du contact et contenu de la demande. A terme d'autres notifications seront déclenchées.
 
